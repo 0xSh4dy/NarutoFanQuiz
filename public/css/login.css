@@ -1,0 +1,69 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+body{
+    background-image: -webkit-repeating-radial-gradient(top left, circle, orange, yellow 10%, orange 20%);
+}
+img{
+    display: block;
+    margin: auto;
+    max-width: 100%;
+    max-height: 50%;
+}
+#PlayerName{
+    display: block;
+    width: 100%;
+    height: 30px;
+    background-color: lightgreen;
+    color: blue;
+    padding-left: 10px;
+    
+}
+#PlayerName:hover{
+    background-color: cyan;
+
+}
+.cont1{
+    margin-top: 30px;
+}
+
+#difficulty{
+    width: 95px;
+    height: 20px;
+    background-color: cyan;
+    color: blue;
+    padding-left:2px;
+}
+#difficulty:hover{
+    background-color: lightgreen;
+}
+.mainCont{
+    position: absolute;
+    top: 50px;
+    padding-left: 10px;
+    display: none;
+}
+#submit{
+    display: block;
+    background-color: cyan;
+    margin-top: 20px;
+    width: 50px;
+    height: 25px;
+}
+#submit:hover{
+    background-color: lightgreen;
+    cursor: pointer;
+}
+#btn{
+    width: 100px;
+    height: 40px;
+    background-color: red;
+    color: white;
+    border-radius: 10px;
+    border: 2px solid cyan;
+    position: absolute;
+    top: 10px;
+    left: 5px;
+    font-size: 25px;
+}
