@@ -3,7 +3,7 @@
     margin: 0;
 }
 body{
-    background-image: -webkit-repeating-radial-gradient(top left, circle, orange, yellow 10%, orange 20%);
+    background-image: -webkit-repeating-radial-gradient(top left, circle, orange, yellow 10%, gold 20%);
 }
 img{
     display: block;

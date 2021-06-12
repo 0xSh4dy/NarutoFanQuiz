@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz</title>
+    <link rel="stylesheet" href="css/quiz.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Padauk&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1><%=Username%></h1>
+        <div class="questionSection">
+            <div id="ques">Welcome, click on the button to start the quiz!</div>
+            <div class="options">
+                <div id="option1"></div>
+                <div id="option2"></div>
+                <div id="option3"></div>
+                <div id="option4"></div>
+                <div id="answer"> <input type="number" min="1" max="4" name="Answer" id="Answer"
+                    placeholder="Enter the option number(e.g. 1 if your answer is 1)"></div>
+            </div>
+        </div>
+        <button id="nextQues">Next</button>
+    </div>
+</body>
+<script src="js/quiz.js"></script>
+</html>
