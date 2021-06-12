@@ -20,12 +20,135 @@
                 <div id="option2"></div>
                 <div id="option3"></div>
                 <div id="option4"></div>
-                <div id="answer"> <input type="number" min="1" max="4" name="Answer" id="Answer"
+                <div id="answer"> <input type="number"  name="Answer" id="Answer"
                     placeholder="Enter the option number(e.g. 1 if your answer is 1)"></div>
             </div>
         </div>
-        <button id="nextQues">Next</button>
+        <div class="buttons">
+          <button id="nextQues">Next</button>
+          <!-- <form method="post" action="/quizAnswers"> -->
+            <input type="submit" id="submit" name="SubmitQuiz" value="Submit">
+          <!-- </form> -->
+        </div>
+
     </div>
 </body>
-<script src="js/quiz.js"></script>
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+$("submit").on("click",function(){
+  $.ajax(
+    {
+      url:"http://127.0.0.1:4000/quizAnswers",
+      async:false,
+      type:"POST",
+      data:"{name:shady, password:done}",
+      success:function(result){
+        alert("hhhhhh");
+      }
+    }
+  );
+});</script> -->
+<script type="text/javascript">
+let arr = [0,0,0,0,0,0,0,0,0,0,0,0];
+let answers = [];
+let questionOrder = [];
+let cnt=1;
+let ques = document.getElementById("ques");
+let option1 = document.getElementById("option1");
+let option2 = document.getElementById("option2");
+let option3 = document.getElementById("option3");
+let option4 = document.getElementById("option4");
+let btn = document.getElementById("nextQues");
+let submitBtn = document.getElementById("submit");
+let userAnswer = document.getElementById("Answer");
+let options = document.querySelector(".options");
+async function getData(){
+    const response = await fetch("/api/easy");
+    const dat = await response.json();
+    function updateContent(){
+        count+=1;
+if(count<=12){
+        var n= generateRand();
+
+        questionOrder.push(n);
+        userAnswer.style.visibility="visible";
+
+        ques.innerHTML =`Question${cnt}: `+dat[n].Question;
+        cnt++;
+        option1.innerHTML = "Option1: "+dat[n].Option1;
+        option2.innerHTML = "Option2: "+dat[n].Option2;
+        option3.innerHTML = "Option3: "+dat[n].Option3;
+        option4.innerHTML = "Option4: "+dat[n].Option4;
+        if(questionOrder.length===1){
+          answers.push("");
+        }
+        else{
+        answers.push(userAnswer.value);
+        console.log(questionOrder);
+        console.log(answers)
+        userAnswer.value="";
+        }
+
+    }
+    else if(count===13){
+      ques.innerHTML = "You have answered all the questions";
+      answers.push(userAnswer.value);
+      console.log(questionOrder);
+      console.log(answers);
+      btn.style.display = "none";
+      options.style.visibility = "hidden";
+      userAnswer.style.display="none";
+    }
+
+}
+    btn.addEventListener("click",updateContent);
+    submitBtn.addEventListener("click",onClickingSubmit);
+
+}
+getData();
+
+function generateRand(){
+
+    let num = Math.floor((arr.length)*Math.random());
+
+    if(arr[num]===0){
+        arr[num]++;
+    return num;
+}
+else{
+    return generateRand();
+}
+}
+let count=0;
+function arrFull(){
+  console.log(count);
+
+    if(count===13){
+        return true;
+    }
+    else{
+        return false;
+    }
+}
+function onClickingSubmit(){
+    let xhttp = new XMLHttpRequest();
+    let url = "http://127.0.0.1:4000/quizAnswers";
+    xhttp.open("POST",url,true);
+    xhttp.setRequestHeader("Content-Type","application/json");
+    xhttp.onreadystatechange = function(){
+      if(xhttp.readyState===4 && xhttp.status===200){
+        alert(this.responseText);
+      }
+    };
+    answers.splice(0,1);
+    let qsAnsData = [...questionOrder,...answers];
+    finalData = {
+        name:"TestName",
+        age:"18"
+    }
+    finalData= JSON.stringify(finalData);
+    console.log(finalData);
+    xhttp.send(finalData);
+}
+
+</script>
 </html>

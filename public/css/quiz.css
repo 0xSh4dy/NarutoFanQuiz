@@ -24,7 +24,7 @@ h1{
     margin-top: 50px;
     padding: 10px;
     background-image: -webkit-repeating-radial-gradient(top left, circle, white, rgb(218, 218, 207) 10%, white 20%);
-    
+
 }
 #ques{
     font-family: 'Padauk', sans-serif;
@@ -52,10 +52,7 @@ h1{
     width: 70px;
     height: 40px;
     color: red;
-    display: block;
     font-size: 15px;
-    margin: auto;
-    margin-top: 10px;
 }
 #nextQues:hover{
     cursor: pointer;
@@ -67,4 +64,20 @@ h1{
     height: 20px;
     padding: 4px;
     background-color: cyan;
+}
+#submit{
+  background-color: cyan;
+  border: 2px solid white;
+  width: 70px;
+  height: 40px;
+  color: red;
+  font-size: 15px;
+  margin-top: 10px;
+}
+#submit:hover{
+    cursor: pointer;
+    background-color: lightgreen;
+}
+.buttons{
+  text-align: center;
 }
