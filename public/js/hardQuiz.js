@@ -13,7 +13,7 @@ var userAnswer = document.getElementById("Answer");
 var options = document.querySelector(".options");
 var showResults = document.getElementById("showResults");
 async function getData(){
-    const response = await fetch("/api/easy");
+    const response = await fetch("/api/hard");
     const dat = await response.json();
     function updateContent(){
         btn.innerHTML = "Next";

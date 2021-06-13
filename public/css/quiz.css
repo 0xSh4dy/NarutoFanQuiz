@@ -14,7 +14,7 @@ h1{
     height: 100vh;
     /* background-image: -webkit-repeating-radial-gradient(top left, circle, blue, chartreuse 10%, blue 20%); */
     background-image: url('./images/bg4.jpg');
-    background-size: 50vw 50vh;
+    background-size: 50vw 70vh;
 }
 .questionSection{
     /* background-color: white; */
