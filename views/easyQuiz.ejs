@@ -26,111 +26,16 @@
         </div>
         <div class="buttons">
           <button id="nextQues">Next</button>
-          <!-- <form method="post" action="/quizAnswers"> -->
+
             <input type="submit" id="submit" name="SubmitQuiz" value="Submit">
-          <!-- </form> -->
+            <button type="submit" name="showResults" id="showResults">View Results</button>
+            
         </div>
 
     </div>
 </body>
-
-<script type="text/javascript">
-let arr = [0,0,0,0,0,0,0,0,0,0,0,0];
-let answers = [];
-let questionOrder = [];
-let cnt=1;
-let ques = document.getElementById("ques");
-let option1 = document.getElementById("option1");
-let option2 = document.getElementById("option2");
-let option3 = document.getElementById("option3");
-let option4 = document.getElementById("option4");
-let btn = document.getElementById("nextQues");
-let submitBtn = document.getElementById("submit");
-let userAnswer = document.getElementById("Answer");
-let options = document.querySelector(".options");
-async function getData(){
-    const response = await fetch("/api/easy");
-    const dat = await response.json();
-    function updateContent(){
-        count+=1;
-if(count<=12){
-        var n= generateRand();
-
-        questionOrder.push(n+1);
-        userAnswer.style.visibility="visible";
-
-        ques.innerHTML =`Question${cnt}: `+dat[n].Question;
-        cnt++;
-        option1.innerHTML = "Option1: "+dat[n].Option1;
-        option2.innerHTML = "Option2: "+dat[n].Option2;
-        option3.innerHTML = "Option3: "+dat[n].Option3;
-        option4.innerHTML = "Option4: "+dat[n].Option4;
-        if(questionOrder.length===1){
-          answers.push("");
-        }
-        else{
-        answers.push(userAnswer.value);
-        console.log(questionOrder);
-        console.log(answers)
-        userAnswer.value="";
-        }
-
-    }
-    else if(count===13){
-      ques.innerHTML = "You have answered all the questions";
-      answers.push(userAnswer.value);
-      console.log(questionOrder);
-      console.log(answers);
-      btn.style.display = "none";
-      options.style.visibility = "hidden";
-      userAnswer.style.display="none";
-    }
-
-}
-    btn.addEventListener("click",updateContent);
-    submitBtn.addEventListener("click",onClickingSubmit);
-
-}
-getData();
-
-function generateRand(){
-
-    let num = Math.floor((arr.length)*Math.random());
-
-    if(arr[num]===0){
-        arr[num]++;
-    return num;
-}
-else{
-    return generateRand();
-}
-}
-let count=0;
-function arrFull(){
-  console.log(count);
-
-    if(count===13){
-        return true;
-    }
-    else{
-        return false;
-    }
-}
-function onClickingSubmit(){
-    options.innerHTML = "";
-    userAnswer.innerHTML ="";
-    ques.innerHTML = "Quiz Submitted!";
-    answers.splice(0,1);
-    
-    fetch('/quizAnswers', {
-    method: 'POST',
-    headers: {'Content-Type':'application/json'},
-    body: JSON.stringify({QuesOrder:questionOrder,AnsOrder:answers})
-
-}).then((res)=>{
-    console.log(res);
-});
-}
+<script src="js/quiz.js">
 
 </script>
+
 </html>

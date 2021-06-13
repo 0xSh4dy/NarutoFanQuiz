@@ -24,9 +24,9 @@ app.get("/",(req,res,next)=>{
 app.get("/api/easy",(req,res,next)=>{
     res.sendFile(__dirname+"/easy.json");
 })
-app.post("/quizAnswers",(req,res,next)=>{
-console.log(req.body);
-  res.send("Answers saved");
+app.post("/quizAnswers",(req,res)=>{
+  console.log(req.body);
+  
 })
 app.post("/",(req,res,next)=>{
     const nameInp = req.body.PlayerName;

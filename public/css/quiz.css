@@ -81,3 +81,19 @@ h1{
 .buttons{
   text-align: center;
 }
+#showResults{
+  background-color: cyan;
+  border: 2px solid white;
+  border-radius: 5px;
+  width: 70px;
+  height: 40px;
+  color: red;
+  display: block;
+  margin:auto;
+  font-size: 15px;
+  display: none;
+}
+#showResults:hover{
+  cursor: pointer;
+  background-color: lightgreen;
+}
