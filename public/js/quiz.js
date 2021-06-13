@@ -16,8 +16,9 @@ async function getData(){
     const response = await fetch("/api/easy");
     const dat = await response.json();
     function updateContent(){
+        btn.innerHTML = "Next";
         count+=1;
-if(count<=12){
+        if(count<=12){
         var n= generateRand();
 
         questionOrder.push(n+1);
@@ -87,6 +88,7 @@ function onClickingSubmit(){
     answers.splice(0,1);
     showResults.style.display = "block";
     submitBtn.style.display = "none";
+    btn.style.display = "none";
     fetch('/quizAnswers', {
     method: 'POST',
     headers: {'Content-Type':'application/json'},
