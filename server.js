@@ -1,7 +1,5 @@
-const fs = require('fs');
 const express = require('express');
 const app = express();
-const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 // var app = express.app();
 const connection_url = 'mongodb+srv://admin:BoAoAuyCcujHi0Ln@cluster0.qni0g.mongodb.net/NarutoDB?retryWrites=true&w=majority';
@@ -16,8 +14,8 @@ const nameSchema = mongoose.Schema({
 const Users = mongoose.model("user",nameSchema);
 
 // Generating random numbers to display the questions and options
-
-app.use(bodyParser.urlencoded({extended:true}));
+app.use(express.json());
+app.use(express.urlencoded({extended:true}));
 app.use(express.static("public"));
 app.set("view engine","ejs");
 app.get("/",(req,res,next)=>{
@@ -27,7 +25,7 @@ app.get("/api/easy",(req,res,next)=>{
     res.sendFile(__dirname+"/easy.json");
 })
 app.post("/quizAnswers",(req,res,next)=>{
-console.log(JSON.stringify(req.body));
+console.log(req.body);
   res.send("Answers saved");
 })
 app.post("/",(req,res,next)=>{

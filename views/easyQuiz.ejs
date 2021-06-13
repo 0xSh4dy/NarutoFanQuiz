@@ -33,20 +33,7 @@
 
     </div>
 </body>
-<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
-$("submit").on("click",function(){
-  $.ajax(
-    {
-      url:"http://127.0.0.1:4000/quizAnswers",
-      async:false,
-      type:"POST",
-      data:"{name:shady, password:done}",
-      success:function(result){
-        alert("hhhhhh");
-      }
-    }
-  );
-});</script> -->
+
 <script type="text/javascript">
 let arr = [0,0,0,0,0,0,0,0,0,0,0,0];
 let answers = [];
@@ -69,7 +56,7 @@ async function getData(){
 if(count<=12){
         var n= generateRand();
 
-        questionOrder.push(n);
+        questionOrder.push(n+1);
         userAnswer.style.visibility="visible";
 
         ques.innerHTML =`Question${cnt}: `+dat[n].Question;
@@ -130,24 +117,19 @@ function arrFull(){
     }
 }
 function onClickingSubmit(){
-    let xhttp = new XMLHttpRequest();
-    let url = "http://127.0.0.1:4000/quizAnswers";
-    xhttp.open("POST",url,true);
-    xhttp.setRequestHeader("Content-Type","application/json");
-    xhttp.onreadystatechange = function(){
-      if(xhttp.readyState===4 && xhttp.status===200){
-        alert(this.responseText);
-      }
-    };
+    options.innerHTML = "";
+    userAnswer.innerHTML ="";
+    ques.innerHTML = "Quiz Submitted!";
     answers.splice(0,1);
-    let qsAnsData = [...questionOrder,...answers];
-    finalData = {
-        name:"TestName",
-        age:"18"
-    }
-    finalData= JSON.stringify(finalData);
-    console.log(finalData);
-    xhttp.send(finalData);
+    
+    fetch('/quizAnswers', {
+    method: 'POST',
+    headers: {'Content-Type':'application/json'},
+    body: JSON.stringify({QuesOrder:questionOrder,AnsOrder:answers})
+
+}).then((res)=>{
+    console.log(res);
+});
 }
 
 </script>
