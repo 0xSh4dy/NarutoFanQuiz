@@ -76,7 +76,9 @@ h1{
     cursor: pointer;
     background-color: lightgreen;
 }
+
 #Answer{
+    margin-top: 10px;
     visibility: hidden;
     width: 350px;
     height: 20px;
@@ -114,4 +116,12 @@ h1{
 #showResults:hover{
   cursor: pointer;
   background-color: lightgreen;
+}
+#footer{
+    
+    background-color: rgb(218,218,210);
+    color: blue;
+    font-size: 30px;
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }

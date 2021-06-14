@@ -75,8 +75,6 @@ app.post("/quizAnswers",(req,res)=>{
 
   let questionOrder = req.body.QuesOrder;
   let answerOrder = req.body.AnsOrder;
-  console.log(questionOrder);
-  console.log(answerOrder);
   let score=0;
 
   for(let i=0;i<answerOrder.length;i++){
@@ -92,7 +90,6 @@ app.post("/quizAnswers",(req,res)=>{
       score++;
     }
   }
-  console.log(score);
   uScore = score;
   const updateDocument = async()=>{
     try{
@@ -133,7 +130,5 @@ app.post('/scoreboard',(req,res)=>{
 app.post("/score/home",(req,res)=>{
   res.redirect("/");
 })
-// app.post("/quizAnswers",(req,res)=>{
-//   res.send("Your answers have been recorded. Thanks for giving the quiz");
-// })
+
 app.listen(process.env.port|| 4000);

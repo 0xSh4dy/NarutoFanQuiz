@@ -72,3 +72,11 @@ input{
   border-radius: 5px;
   border: 2px solid blue;
 }
+#footer{
+    
+    background-color: rgb(218,218,210);
+    color: blue;
+    font-size: 30px;
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
