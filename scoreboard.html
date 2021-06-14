@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Leaderboard</title>
+    <style media="screen">
+
+    body{
+      background-image: url("css/images/bgScore.png");
+      /* background-repeat: no-repeat; */
+      background-size: 100vw 50vh;
+      font-family: 'Bree Serif', serif;
+
+
+    }
+      table{
+        width: 30vw;
+
+        background-image: -webkit-repeating-radial-gradient(top left, circle, white, rgb(218, 218, 247) 10%, white 20%);
+        margin: auto;
+      }
+      thead{
+        color: purple;
+      }
+      td{
+        border: 2px solid blue;
+        text-align: center;
+      }
+      #homepagebtn{
+        width: 70px;
+        height: 30px;
+        border-radius:5px;
+        border:2px solid black;
+        color: red;
+        background-color: rgb(218,217,209);
+        position: absolute;
+        top:5px;
+        left: 2px;
+      }
+      #homepagebtn:hover{
+        cursor: pointer;
+
+      }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap" rel="stylesheet">
+
+
+  </head>
+  <body>
+<table>
+  <thead>
+    <th>Name</th>
+    <th>Difficulty</th>
+    <th>Score</th>
+  </thead>
+  <tbody id="tableBody">
+
+  </tbody>
+</table>
+<form action="/score/home" method="post" >
+  <input type="submit" name="Exit" value="Exit" id="homepagebtn">
+
+</form>
+  </body>
+  <script src="js/scoreboard.js" charset="utf-8"></script>
+</html>

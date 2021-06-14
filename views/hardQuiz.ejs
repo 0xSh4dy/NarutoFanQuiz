@@ -14,7 +14,7 @@
     <div class="container">
         <h1><%=Username%></h1>
         <div class="questionSection">
-            <div id="ques">Welcome, click on the button to start the quiz!</div>
+            <div id="ques">Welcome, click on the Start button to start the quiz!</div>
             <div class="options">
                 <div id="option1"></div>
                 <div id="option2"></div>
@@ -29,7 +29,9 @@
 
             <input type="submit" id="submit" name="SubmitQuiz" value="Submit">
             <button type="submit" name="showResults" id="showResults">View Results</button>
-
+            <form action="/scoreboard" method="post">
+                <input id="scoreF" type="submit" name="leaderboard" value="Leaderboard">
+            </form>
         </div>
 
     </div>

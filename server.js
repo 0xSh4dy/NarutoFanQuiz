@@ -60,7 +60,6 @@ app.post("/",(req,res,next)=>{
               Difficulty:diff
           });
         }
-        res.render("hardQuiz.ejs");
         if(diff<1 || diff>2){
         res.render("error");
       }
@@ -76,20 +75,24 @@ app.post("/quizAnswers",(req,res)=>{
 
   let questionOrder = req.body.QuesOrder;
   let answerOrder = req.body.AnsOrder;
+  console.log(questionOrder);
+  console.log(answerOrder);
   let score=0;
 
   for(let i=0;i<answerOrder.length;i++){
-    let actualAnswer;
-    if(uDiff===1){
+    let actualAnswer= '';
+    if(uDiff==1){
     actualAnswer = easyAnswers[questionOrder[i]-1];
     }
-    else if(uDiff===2){
+    else if(uDiff==2){
       actualAnswer = hardAnswers[questionOrder[i]-1];
     }
+
     if(actualAnswer===answerOrder[i]){
       score++;
     }
   }
+  console.log(score);
   uScore = score;
   const updateDocument = async()=>{
     try{
@@ -109,7 +112,27 @@ app.post("/quizAnswers",(req,res)=>{
 app.get("/results",(req,res)=>{
   res.send("Your score is "+uScore+" out of 12");
 })
-
+app.get("/scoreboard",(req,res)=>{
+  res.sendFile(__dirname+"/scoreboard.html")
+})
+app.get('/api/scoreboard',(req,res)=>{
+  Users.find().sort('-score').exec((err,data)=>{
+    if(err){
+      console.log(err);
+      res.send("Oops, server side error!");
+    }
+    else{
+      res.send(data);
+      console.log(data);
+    }
+  })
+})
+app.post('/scoreboard',(req,res)=>{
+  res.sendFile(__dirname+"/scoreboard.html");
+})
+app.post("/score/home",(req,res)=>{
+  res.redirect("/");
+})
 // app.post("/quizAnswers",(req,res)=>{
 //   res.send("Your answers have been recorded. Thanks for giving the quiz");
 // })

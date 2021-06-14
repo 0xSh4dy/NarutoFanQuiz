@@ -12,6 +12,7 @@ var submitBtn = document.getElementById("submit");
 var userAnswer = document.getElementById("Answer");
 var options = document.querySelector(".options");
 var showResults = document.getElementById("showResults");
+var scoreBoard = document.getElementById("scoreF");
 async function getData(){
     const response = await fetch("/api/easy");
     const dat = await response.json();
@@ -98,6 +99,8 @@ function onClickingSubmit(){
 
 showResults.addEventListener("click",showResult)
 async function showResult(){
+  showResults.style.display = "none";
+  scoreBoard.style.display= "block";
   const res = await fetch('/results');
   const dat = await res.text();
   ques.innerHTML = dat;

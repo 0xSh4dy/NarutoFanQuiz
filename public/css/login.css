@@ -18,7 +18,7 @@ img{
     background-color: lightgreen;
     color: blue;
     padding-left: 10px;
-    
+
 }
 #PlayerName:hover{
     background-color: cyan;
@@ -38,6 +38,7 @@ img{
 #difficulty:hover{
     background-color: lightgreen;
 }
+
 .mainCont{
     position: absolute;
     top: 50px;
@@ -66,4 +67,8 @@ img{
     top: 10px;
     left: 5px;
     font-size: 25px;
+}
+input{
+  border-radius: 5px;
+  border: 2px solid blue;
 }
