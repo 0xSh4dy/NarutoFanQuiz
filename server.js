@@ -120,7 +120,7 @@ app.get('/api/scoreboard',(req,res)=>{
     }
     else{
       res.send(data);
-      console.log(data);
+    
     }
   })
 })
