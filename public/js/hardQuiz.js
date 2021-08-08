@@ -13,12 +13,17 @@ var userAnswer = document.getElementById("Answer");
 var options = document.querySelector(".options");
 var showResults = document.getElementById("showResults");
 var scoreBoard = document.getElementById("scoreF");
-
+var started = 0;
 async function getData(){
     const response = await fetch("/api/hard");
     const dat = await response.json();
     function updateContent(){
         btn.innerHTML = "Next";
+        if(userAnswer.value<1 || userAnswer.value>4 && started!=0 ){
+            alert("Value must be between 1 and 4");
+        }
+        else{
+            started++;
         count+=1;
         if(count<=12){
         var n= generateRand();
@@ -50,6 +55,7 @@ async function getData(){
       userAnswer.style.display="none";
     }
 
+}
 }
     btn.addEventListener("click",updateContent);
     submitBtn.addEventListener("click",onClickingSubmit);
